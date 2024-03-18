@@ -5,7 +5,7 @@ function Navbar({getstate,screenstate}) {
     const [dropdowntoggle, dropdown] = useState(false)
     return (
         <div>
-            <span style={{ display: "flex", justifyContent: "space-between" }}>My Todos: <span>Status Filter:
+            <span style={{ display: "flex", justifyContent: "space-between",fontWeight:"500",fontSize:17}}>My Todos: <span>Status Filter:
                 <div className="btn-group">
                     <button type="button" className={`btn btn-danger dropdown-toggle ${dropdowntoggle ? "show" : ""}`} data-bs-toggle="dropdown" aria-expanded="false"style={{ padding:3,margin:"6px 10px",opacity:0.7,fontSize:14,width:120}} onClick={() => dropdown(!dropdowntoggle)}>
                         {screenstate}
