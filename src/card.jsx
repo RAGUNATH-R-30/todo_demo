@@ -6,7 +6,7 @@ function Card({ list, deletetask, changestatus, editlist, updatelist, buttonstat
     const [dropdowntoggle, dropdown] = useState(false)
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div className="card" style={{ width: "300px", backgroundColor: "#ccf5d3",border:"none"}}>
+            <div className="card" style={{ width: "300px", backgroundColor: "#ccf5d3", border: "none" }}>
                 <div className="card-body">
                     <p className="card-text">Name:{list.title}</p>
                     <p className="card-text">Description:{list.description}</p>
@@ -26,8 +26,8 @@ function Card({ list, deletetask, changestatus, editlist, updatelist, buttonstat
                         </ul>
                     </div></span>
                     <span style={{ display: 'flex', justifyContent: "end" }}>
-                        <button type="button" className="btn btn-success" style={{ padding: 3, margin: "6px 10px", width: 80,backgroundColor:"#14ad89" }} onClick={() => { editlist(list); buttonstate(false) }}>Edit</button>
-                        <button type="button" className="btn btn-danger" style={{ padding: 3, margin: "6px 10px", width: 80,backgroundColor:"#cf5e20" }} onClick={() => deletetask(list)}>Delete</button>
+                        <button type="button" className="btn btn-success" style={{ padding: 3, margin: "6px 10px", width: 80, backgroundColor: "#14ad89" }} onClick={() => { editlist(list); buttonstate(false) }}>Edit</button>
+                        <button type="button" className="btn btn-danger" style={{ padding: 3, margin: "6px 10px", width: 80, backgroundColor: "#cf5e20" }} onClick={() => deletetask(list)}>Delete</button>
                     </span>
                 </div>
             </div>

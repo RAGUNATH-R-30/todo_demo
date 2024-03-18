@@ -5,6 +5,7 @@ import Navbar from './navbar'
 import Card from './card'
 
 function App() {
+  //States
   const [todolist, addtodo] = useState([])
   const [title, titlechange] = useState("")
   const [description, descriptionchange] = useState("")
@@ -16,31 +17,44 @@ function App() {
   const [listtoedit, setlisttoedit] = useState([])
   const [todoeditbuttonstate, setbuttonstate] = useState(true)
 
+  //This is the function adds the new todo list.
   let addlist = (content) => {
-    addtodo([...todolist, content])
-    setcount(id + 1)
-    titlechange("")
-    descriptionchange("")
+    if (content.title == "" || content.description == "") {
+      alert("The todos not to be empty")
+    }
+    else {
+      addtodo([...todolist, content])
+      setcount(id + 1)
+      titlechange("")
+      descriptionchange("")
+    }
+
+
   }
 
+  //This is the function which executes on the title change.
   let titleonchange = (titlevalue) => {
     titlechange(titlevalue.target.value)
   }
 
+  //This is the function which executes on the description change.
   let descriptiononchange = (descriptionvalue) => {
     descriptionchange(descriptionvalue.target.value)
   }
 
+  //This is the function which executes on deleting the task.
   let deletetask = (list) => {
     const newlist = todolist.filter((item) => item.id !== list.id);
     addtodo(newlist)
   }
 
+  //This executes during the status change.
   let changestatus = (change, list) => {
     setstatus(change)
     const changelist = todolist.map((item) => item.id == list.id ? list.status = change : "")
   }
 
+  //This is the function which display the filtered result.
   let getstate = (state) => {
     if (state == "completed") {
       let completedlist = todolist.filter((item) => item.status == "completed")
@@ -57,13 +71,14 @@ function App() {
     }
   }
 
+  //This is the function for editing the todo tasks.
   let editlist = (list) => {
     titlechange(list.title)
     descriptionchange(list.description)
     setlisttoedit(list)
-    console.log(list.title)
   }
 
+  //This is where the edited tasks gets updated.
   let updatelist = (list) => {
     let neweditedlist = todolist
     let index = neweditedlist.indexOf(list)
@@ -74,10 +89,13 @@ function App() {
     setbuttonstate(true)
   }
 
+  //This updates the button state.
   let buttonstate = (state) => {
     setbuttonstate(state)
   }
-  let crossbutton =()=>{
+
+  //This updates the edit cross button.
+  let crossbutton = () => {
     setbuttonstate(true)
     titlechange("")
     descriptionchange("")
@@ -85,7 +103,7 @@ function App() {
   return (
     <>
       <div style={{ textAlign: "center", marginTop: 30 }}>
-        <h4 style={{ color: "#13ad89"}}>My todo</h4>
+        <h4 style={{ color: "#13ad89" }}>My todo</h4>
         <div>
           <input type="text" placeholder='TodoName' style={{ margin: 20, width: 300 }} onChange={titleonchange} value={title} />
           <input type="text" placeholder='Description' style={{ margin: 20, width: 300 }} onChange={descriptiononchange} value={description} />
@@ -95,9 +113,8 @@ function App() {
               :
               <span>
                 <button type="button" className="btn btn-success" style={{ padding: 3, margin: "6px 10px", width: 150, backgroundColor: "#13ad89" }} onClick={() => updatelist(listtoedit)}>Edit</button>
-                <button type="button"className='btn btn-primary'style={{borderRadius:100,fontSize:14,backgroundColor:"#cf5e20",border:"none"}}onClick={()=>crossbutton()}>X</button>
-                </span>
-              
+                <button type="button" className='btn btn-primary' style={{ borderRadius: 100, fontSize: 14, backgroundColor: "#cf5e20", border: "none" }} onClick={() => crossbutton()}>X</button>
+              </span>
           }
         </div>
       </div>
@@ -126,4 +143,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
